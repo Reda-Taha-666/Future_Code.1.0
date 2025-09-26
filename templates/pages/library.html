@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+<section id="library" class="py-5">
+    <div class="container py-5">
+        <h2 class="text-center section-title">📚 مكتبة المصادر</h2>
+        <p class="text-center lead mb-5">استكشف مكتبتنا الشاملة من الكتب والموارد التعليمية المجانية</p>
+        
+        <div class="row">
+            <!-- قسم المبتدئين -->
+            <div class="col-lg-4 mb-4">
+                <div class="library-category h-100">
+                    <h3 class="mb-4">مستوى مبتدئ</h3>
+                    {% for book in beginner_books %}
+                    <div class="resource-item mb-3">
+                        <h5>{{ book.title }}</h5>
+                        <p>{{ book.description|truncatewords:20 }}</p>
+                        <a href="{{ book.file.url }}" class="btn btn-sm btn-outline-primary" download>
+                            📥 تحميل PDF
+                        </a>
+                    </div>
+                    {% empty %}
+                    <p>لا توجد كتب حالياً في هذا المستوى</p>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- قسم المتوسط -->
+            <div class="col-lg-4 mb-4">
+                <div class="library-category h-100">
+                    <h3 class="mb-4">مستوى متوسط</h3>
+                    {% for book in intermediate_books %}
+                    <div class="resource-item mb-3">
+                        <h5>{{ book.title }}</h5>
+                        <p>{{ book.description|truncatewords:20 }}</p>
+                        <a href="{{ book.file.url }}" class="btn btn-sm btn-outline-primary" download>
+                            📥 تحميل PDF
+                        </a>
+                    </div>
+                    {% empty %}
+                    <p>لا توجد كتب حالياً في هذا المستوى</p>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- قسم المتقدم -->
+            <div class="col-lg-4 mb-4">
+                <div class="library-category h-100">
+                    <h3 class="mb-4">مستوى متقدم</h3>
+                    {% for book in advanced_books %}
+                    <div class="resource-item mb-3">
+                        <h5>{{ book.title }}</h5>
+                        <p>{{ book.description|truncatewords:20 }}</p>
+                        <a href="{{ book.file.url }}" class="btn btn-sm btn-outline-primary" download>
+                            📥 تحميل PDF
+                        </a>
+                    </div>
+                    {% empty %}
+                    <p>لا توجد كتب حالياً في هذا المستوى</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

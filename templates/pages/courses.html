@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<section id="courses" class="py-5 bg-light">
+  <div class="container py-5">
+    <h2 class="text-center section-title">الكورسات والمشاريع</h2>
+    <p class="text-center lead mb-5">
+      اختر من بين مجموعة متنوعة من الكورسات والمشاريع العملية التي تناسب مستواك
+    </p>
+
+    <div class="row">
+      <!-- كورس 1 -->
+       {% for course in courses %}
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card course-card h-100">
+          <img
+            src="{{ course.cover_image.url }}"
+            class="card-img-top"
+            alt=" {{ course.title }}  "
+          />
+          <div class="card-body">
+            <h5 class="card-title"> {{ course.title }} </h5>
+            <p class="card-text">
+              {{ course.description|truncatewords:10 }}
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="{% url "course_detail"  course.id%}" class="btn btn-sm btn-outline-primary"> عرض التفاصيل</a>
+              <a href=" {% url 'start_course' course.id %} " class="btn btn-sm btn-outline-primary">ابدأ الآن</a>
+              <span class="badge bg-primary">{{ course.level }}</span>
+            </div>
+          </div>
+        </div>
+      </div>{% empty %}
+      <p class="text-center">لا توجد كورسات حالينا </p>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+{% endblock content %} 

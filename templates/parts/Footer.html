@@ -1,0 +1,58 @@
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <h3 class="text-white mb-4">Future code</h3>
+        <p>
+          نحن منصة تعليمية تهدف إلى تمكين الشباب العربي من خلال تعليم البرمجة
+          وتطوير المهارات التقنية.
+        </p>
+        <div class="d-flex mt-3">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4">
+        <div class="footer-links">
+          <h5>روابط سريعة</h5>
+          <ul>
+            <li><a href="{% url "home" %}">الرئيسية</a></li>
+            <li><a href="{% url "home" %}#about">من نحن</a></li>
+            <li><a href="{% url "courses" %}">الكورسات</a></li>
+            <li><a href="{% url "library" %}">المكتبة</a></li>
+            <li><a href="{% url "blog"%}">المدونة</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4">
+        <div class="footer-links">
+          <h5>الكورسات</h5>
+          <ul>
+            {% for course in latest_courses %}
+            <li><a href="{% url "course_detail"  course.id%}"> {{ course.title|truncatewords:5 }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4">
+        <div class="footer-links">
+          <h5>المصادر</h5>
+          <ul>
+            <li><a href="{% url "library" %}">الكتب الإلكترونية</a></li>
+            <li><a href="{% url "courses" %}">الدروس المصورة</a></li>
+            <li><a href="#">المشاريع العملية</a></li>
+            <li><a href="#">نماذج الأكواد</a></li>
+            <li><a href="#">أسئلة شائعة</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright text-center"><a href ="https://reda-taha-666.github.io/" target="_blank">
+      <p>© 2025 Reda Taha. جميع الحقوق محفوظة.</p>
+    </a>
+    </div>
+  </div>
+</footer>

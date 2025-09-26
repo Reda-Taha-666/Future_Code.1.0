@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% load static %} 
+
+
+
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static "CSS/style_course.css" %}">
+{% endblock extra_css %}
+
+
+     {% block content %}
+
+
+  <div class="container my-4">
+    <!-- الهيدر -->
+    <div class="row">
+      <div class="col-lg-8">
+        {% comment %} <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="صورة كوفر الدورة" class="cover-image" /> {% endcomment %}
+        <img src="{{ course.cover_image.url }}" alt="{{ course.title }}" class="cover-image" />
+        <h1 class="mb-2"> {{ course.title }}  </h1>
+        {% comment %} <p class="lead text-secondary">{{ course.short_description }}</p> {% endcomment %}
+        <p class="course-description">{{ course.short_description|linebreaks }}</p>
+        <!-- <button class="btn btn-cta mb-4">سجّل الآن</button> -->
+
+        <!-- معلومات أساسية -->
+         <section class="mb-5 bg-white p-4 rounded shadow-sm">
+          <h3 class="mb-3">معلومات الدورة</h3>
+          <div class="d-flex align-items-center mb-3">
+            {% comment %} <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="صورة المدرس" class="instructor-img" /> {% endcomment %}
+            {% comment %} <div>
+              <div><strong>أحمد محمد</strong></div>
+              <small class="text-muted">مدرب ويب محترف بخبرة 10 سنوات في تطوير الواجهات الخلفية والأمامية</small>
+            </div> {% endcomment %}
+          </div>
+          <div class="row text-center text-md-start">
+            <div class="col-6 col-md-3 mb-3">
+              <strong>🕒 المدة:</strong>
+              <div> {{ course.duration }}</div>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+              <strong>📚 المستوى:</strong>
+              <div> {{ course.level }}</div>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+              <strong>🌍 اللغة:</strong>
+              <div>{{ course.language }}</div>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+              <strong>💰 السعر:</strong>
+              <div> {% if course.price == 0 %} مجاني {% else %} {{ course.price }} ج.م {% endif %} </div>
+            </div>
+          </div>
+        </section> 
+
+        <!-- وصف الدورة -->
+        <section class="mb-5 bg-white p-4 rounded shadow-sm">
+          <h3 class="mb-3">وصف الدورة</h3>
+          <p>{{ course.description }}</p>
+
+          </section>
+
+        <!-- محتوى الدورة -->
+        {% comment %} <section class="mb-5 bg-white p-4 rounded shadow-sm">
+          <h3 class="mb-3">محتوى الدورة</h3>
+          <div class="accordion" id="courseContentAccordion">
+
+            <!-- الوحدة 1 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#unit1" aria-expanded="false" aria-controls="unit1">
+                  الوحدة 1: مقدمة في  {{ course.title }} 
+                </button>
+              </h2>
+              <div id="unit1" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#courseContentAccordion">
+                <div class="accordion-body">
+                  <ul class="list-group">
+                         {% for l in lessons %}
+                    <li class="list-group-item {% if l.id == lesson.id %}active{% endif %}">
+                      <a href="{% url 'lesson_detail' course.id l.id %}" 
+               class="text-decoration-none d-block {% if l.id == lesson.id %}text-white{% else %}text-dark{% endif %}">
+              {{ l.title }}
+            </a>
+          </li>
+        {% endfor %}
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section> {% endcomment %}
+
+        <!-- مراجعات وتقييمات -->
+        <!-- <section class="mb-5 bg-white p-4 rounded shadow-sm">
+          <h3 class="mb-3">مراجعات وتقييمات</h3>
+          <div class="mb-3 d-flex align-items-center">
+            <div class="me-3 fs-3 fw-bold">4.5</div>
+            <div>
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span>
+              <div class="text-muted">متوسط التقييم العام</div>
+            </div>
+          </div>
+
+          <div class="review">
+            <strong>سارة علي</strong>
+            <p>دورة ممتازة جداً، استفدت كثيراً من الشرح العملي والواضح.</p>
+          </div>
+          <div class="review">
+            <strong>محمد حسن</strong>
+            <p>المدرب محترف والمحتوى منظم بشكل رائع.</p>
+          </div>
+          <div class="review">
+            <strong>ليلى أحمد</strong>
+            <p>أنصح الجميع بهذه الدورة خصوصاً المبتدئين.</p>
+          </div>
+        </section> -->
+
+        <!-- الأسئلة الشائعة -->
+        <section class="mb-5 bg-white p-4 rounded shadow-sm">
+          <h3 class="mb-3">الأسئلة الشائعة</h3>
+          <div class="accordion" id="faqAccordion">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                  هل يوجد شهادة بعد إتمام الدورة؟
+                </button>
+              </h2>
+              <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                 سوف يتم الاضافه قريبا.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faq2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                  هل الدورة مناسبة للمبتدئين؟
+                </button>
+              </h2>
+              <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  نعم، الدورة تبدأ من الصفر وتغطي كل الأساسيات بشكل مبسط.
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="accordion-item">
+              <h2 class="accordion-header" id="faq3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                  ما هي طرق الدفع المتاحة؟
+                </button>
+              </h2>
+              <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  يمكنك الدفع عبر البطاقات الائتمانية، PayPal، أو التحويل البنكي.
+                </div>
+              </div>
+            </div> -->
+
+          </div>
+        </section>
+
+        <!-- CTA أخير -->
+        <section class="text-center mb-5">
+          <a href="{% url 'start_course' course.id %}" > 
+          <button class="btn btn-cta btn-lg mb-3" >ابدأ الدورة الآن</button>
+        </a>
+          <br />
+          <!-- <button class="btn btn-outline-primary btn-lg">اشترِ الآن</button> -->
+          <!-- <p class="mt-3 text-muted">طرق الدفع: بطاقات ائتمانية، PayPal، تحويل بنكي</p> -->
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-4 d-none d-lg-block">
+        <div id="sidebar">
+          <h4 class="mb-3">ملخص الدورة</h4>
+          <!-- <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="صورة كوفر الدورة" class="img-fluid rounded mb-3" /> -->
+          <img src="{{ course.cover_image.url }}" alt="صورة كوفر الدورة" class="img-fluid rounded mb-3" />
+          <h5> {{ course.title }}</h5>
+          <p class="text-muted">{{ course.description|truncatewords:10 }}</p>
+          <ul class="list-unstyled mb-3">
+            <!-- <li><strong>المدرب:</strong> أحمد محمد</li> -->
+            <!-- <li><strong>المدة:</strong> {{ course.duration }} </li> -->
+            <li><strong>المستوى:</strong> {{ course.level }}</li>
+            <li><strong>اللغة:</strong> العربية</li>
+            <!-- <li><strong>السعر:</strong> {% if course.price == 0 %} مجاني {% else %} {{ course.price }} ج.م {% endif %}  </li> -->
+          </ul>
+          <a href="{% url 'start_course' course.id %}" > 
+          <button class="btn btn-cta w-100">سجّل الآن</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {% endblock content %} 

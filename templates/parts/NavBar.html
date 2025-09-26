@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="{% url "home" %}">Future Code</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url "home" %}">الرئيسية</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "home" %}#about">من نحن</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "home" %}">خدماتنا</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "courses" %}">الكورسات</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "library" %}">المكتبة</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "blog"%}">المدونة</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url "contact" %}">تواصل معنا</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

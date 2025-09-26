@@ -1,0 +1,96 @@
+/* الخطوط والألوان */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+}
+.services-section {
+  padding: 40px 20px; /* فوق وتحت 40px، يمين وشمال 20px */
+}
+
+/* ترويسة القسم */
+.services-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.services-header h2 {
+  font-size: 2.5rem;
+  color: #007acc;
+  margin-bottom: 10px;
+}
+.services-header p {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* شبكة البطاقات */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 أعمدة فقط */
+  gap: 20px;
+}
+
+/* بطاقة الخدمة */
+.service-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+.service-card:hover,
+.service-card:focus-within {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+
+/* عنوان الفئة */
+.service-card h3 {
+  color: #007acc;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+/* قائمة الخدمات */
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #444;
+  line-height: 1.6;
+}
+.service-list li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-right: 20px;
+}
+.service-list li::before {
+  content: "✓";
+  position: absolute;
+  right: 0;
+  color: #007acc;
+  font-weight: bold;
+}
+
+/* قابلية الوصول */
+.service-card:focus-within {
+  outline: 3px solid #005f99;
+  outline-offset: 4px;
+}
+
+/* استجابة النص والشبكة */
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr); /* شاشتين متوسطتين */
+  }
+}
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr; /* موبايل */
+  }
+}

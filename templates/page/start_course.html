@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% load lesson_tags %} 
+
+
+
+  <!-- ملف CSS -->
+   {% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/start_course.css' %}">
+  {% endblock extra_css %}
+
+
+
+{% block content %}
+<div class="container mt-4">
+  <!-- عنوان الكورس -->
+  {% comment %} <h2>{{ course.title }}</h2> {% endcomment %}
+
+  <div class="row">
+    <!-- الفيديو + تفاصيل الدرس -->
+    <div class="col-md-8">
+      <div class="video-container mb-3">
+        {% comment %} <iframe width="100%" height="480"
+          src="https://www.youtube.com/embed/{{ lesson.video_url|cut:'https://www.youtube.com/watch?v=' }}"
+          allowfullscreen>
+        </iframe> {% endcomment %}
+        <iframe width="100%" height="480"
+    src="https://www.youtube.com/embed/{{lesson.video_id}}"
+    title="{{ lesson.title }}"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+
+      </div>
+
+      <h4>{{ lesson.title }}</h4>
+      <p>{{ lesson.description }}</p>
+
+      <!-- أزرار التنقل -->
+     <div class="d-flex justify-content-between mt-3">
+        {% if lessons|length > 1 %}
+          {% if lesson != lessons.first %}
+            <a href="{% url 'lesson_detail' course.id lessons|get_previous:lesson.id %}" 
+               class="btn btn-outline-secondary">⬅ السابق</a>
+          {% endif %}
+          {% if lesson != lessons.last %}
+            <a href="{% url 'lesson_detail' course.id lessons|get_next:lesson.id %}" 
+               class="btn btn-primary">التالي ➡</a> 
+          {% endif %}
+        {% endif %}
+      </div>   <br><br>
+
+
+    </div>
+    <!-- قائمة الدروس -->
+    <div class="col-md-4">
+      <h5 class="mb-3">الدروس</h5>
+      <ul class="list-group">
+        {% for l in lessons %}
+          <li class="list-group-item {% if l.id == lesson.id %}active{% endif %}">
+            <a href="{% url 'lesson_detail' course.id l.id %}" 
+               class="text-decoration-none d-block {% if l.id == lesson.id %}text-white{% else %}text-dark{% endif %}">
+              {{ l.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock content %} 
+
