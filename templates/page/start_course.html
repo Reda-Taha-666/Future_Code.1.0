@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% load static %} 
+{% load static %}
 
-{% load lesson_tags %} 
+{% load lesson_tags %}
 
 
 
@@ -36,18 +36,18 @@
       </div>
 
       <h4>{{ lesson.title }}</h4>
-      <p>{{ lesson.description }}</p>
+      <p>{{ lesson.description|linebreaks }}</p>
 
       <!-- أزرار التنقل -->
      <div class="d-flex justify-content-between mt-3">
         {% if lessons|length > 1 %}
           {% if lesson != lessons.first %}
-            <a href="{% url 'lesson_detail' course.id lessons|get_previous:lesson.id %}" 
+            <a href="{% url 'lesson_detail' course.id lessons|get_previous:lesson.id %}"
                class="btn btn-outline-secondary">⬅ السابق</a>
           {% endif %}
           {% if lesson != lessons.last %}
-            <a href="{% url 'lesson_detail' course.id lessons|get_next:lesson.id %}" 
-               class="btn btn-primary">التالي ➡</a> 
+            <a href="{% url 'lesson_detail' course.id lessons|get_next:lesson.id %}"
+               class="btn btn-primary">التالي ➡</a>
           {% endif %}
         {% endif %}
       </div>   <br><br>
@@ -60,7 +60,7 @@
       <ul class="list-group">
         {% for l in lessons %}
           <li class="list-group-item {% if l.id == lesson.id %}active{% endif %}">
-            <a href="{% url 'lesson_detail' course.id l.id %}" 
+            <a href="{% url 'lesson_detail' course.id l.id %}"
                class="text-decoration-none d-block {% if l.id == lesson.id %}text-white{% else %}text-dark{% endif %}">
               {{ l.title }}
             </a>
@@ -70,5 +70,5 @@
     </div>
   </div>
 </div>
-{% endblock content %} 
+{% endblock content %}
 

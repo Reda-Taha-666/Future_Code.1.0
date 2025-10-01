@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+    <!-- CSS -->
+     {% block extra_css %}
+      <link rel="stylesheet" href="{% static "CSS/services2.css" %}">
+
+      {% endblock extra_css %}
+
+
+
+    <!-- Hero Section -->
+    <section class="hhero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3"> تعرف علي الخدمات الخاصة بنا </h1>
+            <p class="lead">نحن في Future Code Academy نقدم لك مجموعة من الخدمات المصممة بعناية لمساعدتك على احتراف البرمجة ودخول سوق العمل بثقة </p>
+            <p class="lead">نقدم مجموعة متكاملة من الخدمات التقنية والتصميمية لتلبية احتياجاتك بأعلى جودة واحترافية</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center ssection-title">خدماتنا المتميزة</h2>
+
+            <div class="row g-4">
+
+                <!-- التعليم والتدريب -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="sservice-card card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-book ccard-icon"></i>
+                            <h3 class="ccard-title">التعليم والتدريب</h3>
+                            <ul class="sservice-list">
+                                <li>كورسات برمجة (Python, Django, C++, Web Development)</li>
+                                <li>شروحات مصغرة مجانية (مقالات / فيديوهات / كتب PDF)</li>
+                                <li>خطط تدريب فردية للطلاب والمبتدئين</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تصميم وتطوير المواقع -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="sservice-card card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-laptop ccard-icon"></i>
+                            <h3 class="ccard-title">تصميم وتطوير المواقع</h3>
+                            <ul class="sservice-list">
+                                <li>مواقع شخصية / بورتفوليو</li>
+                                <li>مواقع شركات صغيرة ومتوسطة</li>
+                                <li>مواقع تعليمية (كورسات – مكتبة – مدونة)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تطوير التطبيقات -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="sservice-card card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-phone ccard-icon"></i>
+                            <h3 class="ccard-title">تطوير التطبيقات</h3>
+                            <ul class="sservice-list">
+                                <li>تطبيقات ويب (Web Apps)</li>
+                                <li>تطبيقات موبايل (Android – iOS)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- تصميم الهوية الرقمية -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="sservice-card card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-palette ccard-icon"></i>
+                            <h3 class="ccard-title">تصميم الهوية الرقمية</h3>
+                            <ul class="sservice-list">
+                                <li>تصميم UI/UX للمواقع والتطبيقات</li>
+                                <li>تحسين تجربة المستخدم</li>
+                                <li>إنشاء شعار (Logo) أو ألوان متناسقة للبراند</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock content %}

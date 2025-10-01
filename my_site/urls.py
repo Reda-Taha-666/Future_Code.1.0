@@ -8,13 +8,13 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('jet/', include('jet.urls','jet')),
     path('admin/', admin.site.urls),
-    path('home/', include('home.urls')),
+    path('', include('home.urls')),
     path('contact/', include('contact.urls')),  # ربط تطبيق الفورم
     path('courses/', include('courses.urls')),  # ربط تطبيق الفورم
     path('library/', include('library.urls')),  # ربط تطبيق الفورم
     path('blog/', include('blog.urls')),  # ربط تطبيق الفورم
 
-    
+
 
     path('success/', lambda request: render(request, "pages/success.html"), name='success'),
 

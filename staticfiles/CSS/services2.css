@@ -1,0 +1,89 @@
+:root {
+  --primary-color: #3a86ff;
+  --secondary-color: #8338ec;
+  --accent-color: #ff006e;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+}
+
+body {
+  font-family: "Tajawal", sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+  line-height: 1.6;
+}
+
+.hhero-section {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+  /*padding: 80px 0;*/
+    padding: 100px 20px;
+  text-align: center;
+}
+
+.ssection-title {
+  position: relative;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.ssection-title:after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--primary-color);
+  margin: 15px auto;
+}
+
+.sservice-card {
+  border-radius: 12px;
+  overflow: visible;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
+  border: none;
+  background-color: white;
+}
+
+.sservice-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ccard-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.ccard-title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.sservice-list {
+  text-align: right;
+  padding-right: 0;
+}
+
+.sservice-list li {
+  margin-bottom: 8px;
+  list-style-type: none;
+  position: relative;
+  padding-right: 20px;
+}
+
+.sservice-list li:before {
+  content: "✓";
+  position: absolute;
+  right: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+

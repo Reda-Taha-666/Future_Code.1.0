@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)+j06^-3*&r_86u7&m==6%2yla=mtzs@qj4=^44ek*ip3kv_e%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = []
-# DEBUG = False
+ALLOWED_HOSTS = ['RedaTaha.pythonanywhere.com']
+DEBUG = False
 
 # ALLOWED_HOSTS = ['redataha.pythonanywhere.com']
 
@@ -35,7 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'jet', 
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,12 +52,12 @@ INSTALLED_APPS = [
 
 # Emais
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "rt684906@gmail.com"
-EMAIL_HOST_PASSWORD = "qkhljupijscchlzq"  # باسورد التطبيق (App Password)
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_HOST = "smtp.gmail.com"
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = "rt684906@gmail.com"
+# EMAIL_HOST_PASSWORD = "qkhljupijscchlzq"  # باسورد التطبيق (App Password)
 
 
 
@@ -140,6 +140,8 @@ USE_TZ = True
 STATIC_ROOT = os.path.join( BASE_DIR,'static/')
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [ os.path.join( BASE_DIR,'my_site/static/') ]
+
+STATIC_ROOT = 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

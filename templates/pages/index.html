@@ -1,12 +1,8 @@
 {% extends "base.html" %}
-{% load static %} 
+{% load static %}
 
 
-    <!-- CSS -->
-      {% block extra_css %}
-      <link rel="stylesheet" href="{% static "CSS/services.css" %}">
-      {% endblock extra_css %}
-     
+
 
 
     {% block content %}
@@ -16,8 +12,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="hero-title display-4 fw-bold mb-4">تعليم البرمجة للشباب بطريقة سهلة وعملية</h1>
-                    <p class="lead mb-4">انطلق في رحلة تعلم البرمجة مع Future Code واكتشف عالمًا من الفرص والإبداع. نوفر لك مصادر تعليمية عالية الجودة تلبي جميع مستوياتك.</p>
+                    <h1 class="hero-title display-4 fw-bold mb-4"> Future Code Academy طريقك للاحتراف في البرمجة والذكاء الاصطناعي  </h1>
+                    <p class="lead mb-4">  ابدأ رحلتك في عالم البرمجة مع أفضل الدورات العملية، من المبتدئين للمحترفين. تعلم، طوّر، وابدأ مستقبلك اليوم  </p>
                     <div class="d-flex gap-3">
                         <a href="#courses" class="btn btn-light btn-lg">ابدأ التعلم الآن</a>
                         <a href="{% url 'library'%}" class="btn btn-outline-light btn-lg">استكشف المكتبة</a>
@@ -40,14 +36,15 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="img-hover-zoom">
-                        
+
                         <img src=" {% static "image/photo2.jpg" %}" alt="فريق  Future code يعمل على تطوير محتوى تعليمي" class="img-fluid rounded-3">
                     </div>
                 </div>
                 <div class="col-lg-6" style="padding: 0 40px ;">
-                    <h3 class="mb-4">قصة Future code</h3>
-                    <p>بدأت Future code برؤية بسيطة وهي جعل تعلم البرمجة متاحًا وسهلًا للشباب العربي. نؤمن بأن البرمجة هي لغة المستقبل وهي المفتاح لفرص عمل أفضل وإبداع لا حدود له.</p>
+                    <h3 class="mb-4">نبذة عن الأكاديمية ....</h3>
+                    <p> Future Code Academy هي أكاديميتك للانطلاق في عالم البرمجة! نوفر لك دورات عملية متقدمة تُناسب جميع المستويات، من المبتدئين إلى المحترفين، مع منهج تعليمي حديث يساعدك على اكتساب المهارات المطلوبة في سوق العمل. </p>
                     <p>هدفنا هو تمكين الشباب من خلال توفير محتوى تعليمي عالي الجودة، مشاريع عملية، ومجتمع داعم يساعدك في رحلة تعلمك.</p>
+                    <a href="{% url "services"  %}" class="btn btn-sm btn-outline-primary"> تعرف علينا </a>
                     {% comment %} <div class="d-flex mt-4">
                         <div class="me-4">
                             <h4 class="text-primary">0+</h4>
@@ -67,17 +64,17 @@
         </div>
     </section>
 
-    {% include "pages/services.html" %}
-    
+
+
     <!-- قسم الكورسات -->
     <section id="courses" class="py-5 bg-light">
         <div class="container py-5">
             <h2 class="text-center section-title">الكورسات والمشاريع</h2>
             <p class="text-center lead mb-5">اختر من بين مجموعة متنوعة من الكورسات والمشاريع العملية التي تناسب مستواك</p>
-            
+
             <div class="row">
                 <!-- كورس 1 -->
-              
+
                        {% for course in latest_courses %}
       <div class="col-md-6 col-lg-4 mb-4">
         <div class="card course-card h-100">
@@ -102,7 +99,7 @@
       {% endfor %}
 
             </div>
-            
+
             <div class="text-center mt-4">
                 <a href="{% url "courses" %}" class="btn btn-primary">عرض جميع الكورسات</a>
             </div>
@@ -115,7 +112,7 @@
         <div class="container py-5">
             <h2 class="text-center section-title">مدونة Future code</h2>
             <p class="text-center lead mb-5">اقرأ أحدث المقالات والنصائح حول تعلم البرمجة والتطوير</p>
-            
+
             <div class="row">
                 <!-- مقال 1 -->
                 {% for post in latest_post %}
@@ -130,9 +127,9 @@
               {{ post.content|truncatewords:30 }}
             </p>
 
-            
+
             <a href="{% url "post_detail"  post.id%}" class="btn btn-sm btn-outline-primary">اقرأ المزيد</a>
-            
+
           </div>
           <div class="card-footer">
             <small class="text-muted">نشر في: {{ post.created_at|date:"d M Y" }}</small>
@@ -144,7 +141,7 @@
       {% endfor %}
 
             </div>
-            
+
             <div class="text-center mt-4">
                 <a href="{% url 'blog' %}" class="btn btn-primary">عرض جميع المقالات</a>
             </div>
@@ -152,4 +149,4 @@
     </section>
 
 
-{% endblock content %} 
+{% endblock content %}

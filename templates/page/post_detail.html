@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <section class="py-5">
   <div class="container py-5">
@@ -7,13 +6,74 @@
       <div class="col-lg-8">
         <div class="card shadow-sm">
           {% if post.image %}
-          <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+          <img
+            src="{{ post.image.url }}"
+            class="card-img-top"
+            alt="{{ post.title }}"
+          />
           {% endif %}
           <div class="card-body">
             <h2 class="card-title">{{ post.title }}</h2>
             <p class="text-muted">نشر في: {{ post.created_at|date:"d M Y" }}</p>
-            <hr>
+            <hr />
             <p class="card-text">{{ post.content|linebreaks }}</p>
+          </div>
+        </div>
+
+        <!-- قسم التعليقات -->
+        <div class="card mt-4 shadow-sm">
+          <div class="card-body">
+            <h4 class="mb-3">💬 التعليقات ({{ comments.count }})</h4>
+
+            {% for comment in comments %}
+            <div class="mb-3 p-3 border rounded">
+              <p><strong>{{ comment.name }}</strong></p>
+              <p>{{ comment.content }}</p>
+              <small class="text-muted"
+                >{{ comment.created_at|date:"d M Y - H:i" }}</small
+              >
+            </div>
+            {% empty %}
+            <p class="text-muted">لا يوجد تعليقات حتى الآن.</p>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- فورم إضافة تعليق -->
+        <div class="card mt-4 shadow-sm">
+          <div class="card-body">
+            <h4 class="mb-3">✍️ أضف تعليقك</h4>
+            <form method="post">
+              {% csrf_token %}
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="اسمك الكامل"
+                  name="name"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  placeholder="بريدك الإلكتروني"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  name="content"
+                  placeholder="تعليقك"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">إرسال</button>
+            </form>
           </div>
         </div>
       </div>
